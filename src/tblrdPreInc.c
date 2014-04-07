@@ -33,14 +33,14 @@ int tblrd_PreInc(Bytecode *code){
 
 	tablePointer = TBLPTRUp + TBLPTRHi + TBLPTRLo;
 
-	if(tablePointer <= 0x00 || tablePointer >= 0x200000){
+	if(tablePointer < 0x00 || tablePointer > 0x200000){
 		Throw(ERR_INVALID_TBL_PTR);
 	}
 
-	if(tablePointer == 200000){
+	if(tablePointer == 0x200000){
 		tablePointer = tablePointer;
 	}
-	else{
+	else if(tablePointer != 0x200000){
 	tablePointer++;
 	}
 	
